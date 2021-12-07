@@ -1,0 +1,7 @@
+.nav-active {
+  @apply text-green-500 border-b-4 border-green-500;
+}
+
+.nav-inactive {
+  @apply text-gray-500 hover:text-green-500 transition duration-300;
+}
