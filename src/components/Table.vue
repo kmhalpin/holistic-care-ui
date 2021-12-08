@@ -36,11 +36,20 @@ import JbButtons from './JbButtons.vue';
 
 export default {
   components: { Level, JbButtons, JbButton },
-  props: ['rowPerPage', 'rows'],
+  props: {
+    rowPerPage: {
+      type: Number,
+      default: 10,
+    },
+    rows: {
+      type: Array,
+      default() { return []; },
+    },
+  },
   setup(props) {
-    const { rows } = toRefs(props);
+    const { rows, rowPerPage } = toRefs(props);
 
-    const perPage = ref(props.rowPerPage);
+    const perPage = ref(rowPerPage);
 
     const currentPage = ref(0);
 
@@ -66,50 +75,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.table-wrapper {
-  @apply overflow-x-auto w-full;
-}
-
-table {
-  @apply w-full;
-}
-
-thead {
-  @apply table-header-group;
-}
-
-tr {
-  @apply max-w-full block relative border-b-4 border-gray-100
-    table-row border-b-0;
-}
-
-tr:last-child {
-  @apply border-b-0;
-}
-
-th {
-  @apply text-left py-2 px-3;
-}
-
-td {
-  @apply table-cell text-left py-2 px-3 align-middle border-b-0;
-}
-
-tr:nth-child(odd) td {
-  @apply bg-gray-50;
-}
-
-td:last-child {
-  @apply border-b-0;
-}
-
-tbody tr:hover td {
-  @apply bg-gray-100;
-}
-
-.table-pagination {
-  @apply px-6 py-3 border-t border-gray-100;
-}
-</style>
