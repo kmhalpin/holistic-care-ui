@@ -2,3 +2,9 @@
 @import "./_navbar.css";
 @import "./_table.css";
 @import "./_checkInput.css";
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
