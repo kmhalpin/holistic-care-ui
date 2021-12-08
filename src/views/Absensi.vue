@@ -1,0 +1,89 @@
+<template>
+  <div class="flex justify-center items-center h-full">
+    <div v-if="!isMobile()" class="p-12 text-center">
+      <p>Harap membuka aplikasi melalui smartphone untuk melakukan absensi</p>
+    </div>
+    <div v-else class="p-12">
+      <qrcode-stream @decode="onDecode" :camera="camera" @init="onInit">
+        <jb-button
+          @click="switchCamera"
+          color="bg-blue-500 text-white hover:bg-blue-600"
+          small
+          label="switch"
+        />
+      </qrcode-stream>
+      <div class="text-center">
+        <p>Arahkan kamera ke QR Code</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { QrcodeStream } from 'vue-qrcode-reader';
+import JbButton from '../components/JbButton.vue';
+
+export default {
+  data() {
+    return {
+      error: '',
+      camera: 'rear',
+    };
+  },
+  components: {
+    QrcodeStream,
+    JbButton,
+  },
+  methods: {
+    isMobile() {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true;
+      }
+      return false;
+    },
+    switchCamera() {
+      switch (this.camera) {
+        case 'front':
+          this.camera = 'rear';
+          break;
+        case 'rear':
+          this.camera = 'front';
+          break;
+        default:
+          break;
+      }
+    },
+    onDecode(result) {
+      console.log(result);
+    },
+    async onInit(promise) {
+      try {
+        await promise;
+      } catch (error) {
+        if (error.name === 'NotAllowedError') {
+          this.error = 'ERROR: you need to grant camera access permission';
+        } else if (error.name === 'NotFoundError') {
+          this.error = 'ERROR: no camera on this device';
+        } else if (error.name === 'NotSupportedError') {
+          this.error = 'ERROR: secure context required (HTTPS, localhost)';
+        } else if (error.name === 'NotReadableError') {
+          this.error = 'ERROR: is the camera already in use?';
+        } else if (error.name === 'OverconstrainedError') {
+          this.error = 'ERROR: installed cameras are not suitable';
+        } else if (error.name === 'StreamApiNotSupportedError') {
+          this.error = 'ERROR: Stream API is not supported in this browser';
+        } else if (error.name === 'InsecureContextError') {
+          this.error = 'ERROR: Camera access is only permitted in secure context. Use HTTPS or localhost rather than HTTP.';
+        } else {
+          this.error = `ERROR: Camera error (${error.name})`;
+        }
+
+        console.error(this.error);
+      }
+    },
+  },
+};
+</script>
+
+<style>
+</style>
