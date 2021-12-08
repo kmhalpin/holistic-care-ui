@@ -1,64 +1,57 @@
 <template>
-  <layout>
-    <card title="Insert Logbook">
-      <form>
-        <Field label="Kompetensi">
-          <v-select
-            v-model="isKompetensi" :options="['Ya', 'Tidak']">
-          </v-select>
-        </Field>
-        <input type="hidden" v-model="isKompetensi" name="isKompetensi" />
-        <Field label="Logbook" v-if="isKompetensi === 'Tidak'">
-          <Input name="logbook" type="textarea" />
-        </Field>
-        <Field label="List Kompetensi" v-if="isKompetensi === 'Ya'">
-          <v-select
-            v-model="kompetensi" :options="listKompetensi">
-          </v-select>
-        </Field>
-        <input type="hidden" v-model="kompetensi" name="kompetensi" />
-        <Field label="Tipe" v-if="isKompetensi === 'Ya'">
-          <check-input
-            v-model="tipeKompetensi"
-            name="tipeKompetensi"
-            type="radio"
-            column
-            :options="{ 1: 'Observasi', 2: 'Asistensi', 3: 'Mandiri' }"
-          />
-        </Field>
-        <Field label="Keterangan" v-if="isKompetensi === 'Ya'">
-          <Input name="keterangan" type="textarea" />
-        </Field>
-        <jb-buttons type="justify-end">
-          <jb-button
-            type="submit"
-            color="bg-blue-500 text-white hover:bg-blue-600"
-            label="Submit"
-          />
-        </jb-buttons>
-      </form>
-    </card>
-    <card title="Logbook">
-      <Table :rows="logbooks">
-        <template v-slot:thead>
-          <tr>
-            <th>No</th>
-            <th>Logbook</th>
-            <th>Kompetensi</th>
-          </tr>
-        </template>
-        <template v-slot:row="rowProps">
-          <td>{{ rowProps.index + 1 }}</td>
-          <td>{{ rowProps.item.logbook }}</td>
-          <td>{{ rowProps.item.kompetensi ? 'Y' : 'N' }}</td>
-        </template>
-      </Table>
-    </card>
-  </layout>
+  <card title="Insert Logbook">
+    <form>
+      <Field label="Kompetensi">
+        <v-select v-model="isKompetensi" :options="['Ya', 'Tidak']"> </v-select>
+      </Field>
+      <input type="hidden" v-model="isKompetensi" name="isKompetensi" />
+      <Field label="Logbook" v-if="isKompetensi === 'Tidak'">
+        <Input name="logbook" type="textarea" />
+      </Field>
+      <Field label="List Kompetensi" v-if="isKompetensi === 'Ya'">
+        <v-select v-model="kompetensi" :options="listKompetensi"> </v-select>
+      </Field>
+      <input type="hidden" v-model="kompetensi" name="kompetensi" />
+      <Field label="Tipe" v-if="isKompetensi === 'Ya'">
+        <check-input
+          v-model="tipeKompetensi"
+          name="tipeKompetensi"
+          type="radio"
+          column
+          :options="{ 1: 'Observasi', 2: 'Asistensi', 3: 'Mandiri' }"
+        />
+      </Field>
+      <Field label="Keterangan" v-if="isKompetensi === 'Ya'">
+        <Input name="keterangan" type="textarea" />
+      </Field>
+      <jb-buttons type="justify-end">
+        <jb-button
+          type="submit"
+          color="bg-blue-500 text-white hover:bg-blue-600"
+          label="Simpan"
+        />
+      </jb-buttons>
+    </form>
+  </card>
+  <card title="Logbook">
+    <Table table :rows="logbooks">
+      <template v-slot:thead>
+        <tr>
+          <th>No</th>
+          <th>Logbook</th>
+          <th>Kompetensi</th>
+        </tr>
+      </template>
+      <template v-slot:row="rowProps">
+        <td>{{ rowProps.index + 1 }}</td>
+        <td>{{ rowProps.item.logbook }}</td>
+        <td>{{ rowProps.item.kompetensi ? "Y" : "N" }}</td>
+      </template>
+    </Table>
+  </card>
 </template>
 
 <script>
-import vSelect from 'vue-select';
 import Card from '../components/Card.vue';
 import Table from '../components/Table.vue';
 import Field from '../components/Field.vue';
@@ -66,7 +59,6 @@ import Input from '../components/Input.vue';
 import JbButtons from '../components/JbButtons.vue';
 import JbButton from '../components/JbButton.vue';
 import CheckInput from '../components/CheckInput.vue';
-import Layout from '../layout/Layout.vue';
 
 export default {
   name: 'Logbook',
@@ -141,12 +133,10 @@ export default {
     };
   },
   components: {
-    Layout,
     Card,
     Table,
     Field,
     Input,
-    vSelect,
     CheckInput,
     JbButtons,
     JbButton,

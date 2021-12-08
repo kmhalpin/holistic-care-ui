@@ -1,6 +1,6 @@
 <template>
   <div class="table-wrapper">
-    <table>
+    <table v-if="table">
       <thead>
         <slot name="thead" />
       </thead>
@@ -10,6 +10,11 @@
         </tr>
       </tbody>
     </table>
+    <slot
+      v-else
+      v-for="(item, index) in itemsPaginated" :key="item.id"
+      name="row" :item="item" :index="index + (rowPerPage * currentPage)"
+    />
     <div class="table-pagination">
       <level>
         <jb-buttons>
@@ -44,6 +49,10 @@ export default {
     rows: {
       type: Array,
       default() { return []; },
+    },
+    table: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {

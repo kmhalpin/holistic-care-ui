@@ -1,13 +1,40 @@
 <template>
-  <nav class="z-50 bg-gray-800 fixed md:static bottom-0 inset-x-0">
-    <div class="pr-2 lg:pr-8">
-      <div class="relative flex items-center justify-between md:justify-end h-16">
-          <a href="" class="py-4 px-2 font-semibold nav-inactive">Absensi</a>
-          <a href="" class="py-4 px-2 font-semibold nav-active">Logbook</a>
-          <a href="" class="py-4 px-2 font-semibold nav-inactive">Tugas</a>
-          <a href="" class="py-4 px-2 font-semibold nav-inactive"> Chart </a>
-          <a href="" class="py-4 px-2 font-semibold nav-inactive"> Logout </a>
-      </div>
+  <nav class="h-16
+    z-50
+    md:grid
+    md:grid-cols-3
+    bg-primary
+    fixed
+    md:static
+    bottom-0
+    inset-x-0
+    overflow-clip
+    overflow-hidden"
+  >
+    <div class="hidden md:col-span-2 md:flex items-center justify-start">
+      <img width="70" class="pl-4" src="https://holisticareindonesia.com/wp-content/uploads/2021/10/logo-square.png" alt="logo">
+    </div>
+    <div class="md:col-span-1 flex items-center justify-around">
+      <a href="" class="nav nav-active">
+        <fa-icon :icon="['fas', 'book']" />
+        <span class="block text-xs">logbook</span>
+      </a>
+      <a href="" class="nav nav-inactive">
+        <fa-icon :icon="['fas', 'tasks']" />
+        <span class="block text-xs">tugas</span>
+      </a>
+      <a href="" class="nav nav-inactive">
+        <fa-icon :icon="['fas', 'qrcode']" />
+        <span class="block text-xs">absensi</span>
+      </a>
+      <a href="" class="nav nav-inactive">
+        <fa-icon :icon="['fas', 'table']" />
+        <span class="block text-xs">chart</span>
+      </a>
+      <a href="" class="nav nav-inactive">
+        <fa-icon :icon="['fas', 'sign-out-alt']" />
+        <span class="block text-xs">logout</span>
+      </a>
     </div>
   </nav>
 </template>

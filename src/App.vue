@@ -5,12 +5,15 @@
 </template>
 
 <script>
+import Layout from './layout/Layout.vue';
 import Logbook from './views/Logbook.vue';
+// import Tugas from './views/Tugas.vue';
 
 export default {
   name: 'App',
   components: {
     Logbook,
+    Layout,
   },
 };
 </script>
