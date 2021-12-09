@@ -1,36 +1,40 @@
-<script setup>
-import { computed, defineEmits, defineProps } from 'vue';
+<script>
+import { computed } from 'vue';
 
-const props = defineProps({
-  options: {
-    type: Object,
-    default: () => {},
+export default {
+  props: {
+    options: {
+      type: Object,
+      default: () => {},
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      default: 'checkbox',
+    },
+    column: Boolean,
+    modelValue: {
+      type: [Object, Array, String, Number],
+      default: null,
+    },
   },
-  name: {
-    type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    default: 'checkbox',
-  },
-  column: Boolean,
-  modelValue: {
-    type: [Object, Array, String, Number],
-    default: null,
-  },
-});
+  emits: ['update:modelValue'],
+  setup(props, { emit }) {
+    const computedValue = computed({
+      get: () => props.modelValue,
+      set: (value) => {
+        emit('update:modelValue', value);
+      },
+    });
 
-const emit = defineEmits(['update:modelValue']);
+    const inputType = computed(() => (props.type === 'radio' ? 'radio' : 'checkbox'));
 
-const computedValue = computed({
-  get: () => props.modelValue,
-  set: (value) => {
-    emit('update:modelValue', value);
+    return { computedValue, inputType };
   },
-});
-
-const inputType = computed(() => (props.type === 'radio' ? 'radio' : 'checkbox'));
+};
 </script>
 
 <template>

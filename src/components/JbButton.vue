@@ -25,7 +25,7 @@ export default {
     },
     color: {
       type: String,
-      default: 'bg-white text-black hover:bg-gray-50',
+      default: 'white',
     },
     as: {
       type: String,

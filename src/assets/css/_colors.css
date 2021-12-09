@@ -1,0 +1,23 @@
+.danger {
+  @apply bg-red-500 text-white hover:bg-red-600;
+}
+
+.info {
+  @apply bg-blue-500 text-white hover:bg-blue-600;
+}
+
+.light {
+  @apply bg-gray-100 text-black hover:bg-gray-200;
+}
+
+.success {
+  @apply bg-green-500 text-white hover:bg-green-600;
+}
+
+.warning {
+  @apply bg-yellow-500 text-white hover:bg-yellow-600;
+}
+
+.white {
+  @apply bg-white text-black hover:bg-gray-50;
+}

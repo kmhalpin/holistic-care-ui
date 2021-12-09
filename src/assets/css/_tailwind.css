@@ -1,3 +1,64 @@
 @tailwind base;
+
+@layer base {
+  .no-tailwindcss-base blockquote,
+  .no-tailwindcss-base dl,
+  .no-tailwindcss-base dd,
+  .no-tailwindcss-base h1,
+  .no-tailwindcss-base h2,
+  .no-tailwindcss-base h3,
+  .no-tailwindcss-base h4,
+  .no-tailwindcss-base h5,
+  .no-tailwindcss-base h6,
+  .no-tailwindcss-base hr,
+  .no-tailwindcss-base figure,
+  .no-tailwindcss-base p,
+  .no-tailwindcss-base pre {
+    margin: revert;
+  }
+
+  .no-tailwindcss-base h1,
+  .no-tailwindcss-base h2,
+  .no-tailwindcss-base h3,
+  .no-tailwindcss-base h4,
+  .no-tailwindcss-base h5,
+  .no-tailwindcss-base h6 {
+    font-size: revert;
+    font-weight: revert;
+  }
+
+  .no-tailwindcss-base ol,
+  .no-tailwindcss-base ul {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
+  }
+
+  .no-tailwindcss-base img,
+  .no-tailwindcss-base svg,
+  .no-tailwindcss-base video,
+  .no-tailwindcss-base canvas,
+  .no-tailwindcss-base audio,
+  .no-tailwindcss-base iframe,
+  .no-tailwindcss-base embed,
+  .no-tailwindcss-base object {
+    display: revert;
+    vertical-align: revert;
+  }
+
+  .no-tailwindcss-base *,
+  .no-tailwindcss-base::before,
+  .no-tailwindcss-base::after {
+    border-width: revert;
+    border-style: revert;
+    border-color: revert;
+  }
+
+  .no-tailwindcss-base button:focus {
+    outline: revert;
+    outline: revert;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;

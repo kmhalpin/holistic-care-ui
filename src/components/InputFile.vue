@@ -17,6 +17,10 @@ export default {
       type: String,
       default: 'Upload',
     },
+    name: {
+      type: String,
+      default: 'file',
+    },
     icon: {
       type: String,
       default: 'mdiUpload',
@@ -27,7 +31,7 @@ export default {
     },
     color: {
       type: String,
-      default: 'bg-blue-500 text-white hover:bg-blue-600',
+      default: 'info',
     },
   },
   emits: ['update:modelValue'],
@@ -110,6 +114,7 @@ export default {
       <input
         ref="root"
         type="file"
+        :name="name"
         class="absolute top-0 left-0 w-full h-full opacity-0 outline-none cursor-pointer -z-1"
         :accept="accept"
         @input="upload"

@@ -2,13 +2,14 @@
   <paginated :rows="tugas">
     <template v-slot:row="rowProps">
       <card :title="rowProps.item.preceptor">
-        <p>{{ rowProps.item.judul }}</p>
+        <p class="font-bold">{{ rowProps.item.judul }}</p>
         <p>{{ rowProps.item.preceptor }}</p>
-        <p>Deadline: {{ rowProps.item.deadline }}</p>
+        <p>Deadline: {{ getDateString(rowProps.item.deadline) }}</p>
         <jb-buttons type="justify-end">
           <jb-button
-            type="button"
-            color="bg-blue-500 text-white hover:bg-blue-600"
+            as="a"
+            :href="'/tugas/' + rowProps.item.id"
+            color="info"
             label="Detail"
           />
         </jb-buttons>
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import { getDateString } from '../utils';
 import Card from '../components/Card.vue';
 import Paginated from '../components/Paginated.vue';
 import JbButtons from '../components/JbButtons.vue';
@@ -25,6 +27,9 @@ import JbButton from '../components/JbButton.vue';
 
 export default {
   name: 'Tugas',
+  methods: {
+    getDateString,
+  },
   data() {
     return {
       tugas: [

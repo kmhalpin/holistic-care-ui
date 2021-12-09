@@ -1,4 +1,5 @@
 @import "./_tailwind.css";
+@import "./_colors.css";
 @import "./_navbar.css";
 @import "./_table.css";
 @import "./_checkInput.css";

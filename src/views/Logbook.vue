@@ -1,33 +1,37 @@
 <template>
   <card title="Insert Logbook">
     <form>
-      <Field label="Kompetensi">
+      <field label="Kompetensi">
         <v-select v-model="isKompetensi" :options="['Ya', 'Tidak']"> </v-select>
-      </Field>
+      </field>
       <input type="hidden" v-model="isKompetensi" name="isKompetensi" />
-      <Field label="Logbook" v-if="isKompetensi === 'Tidak'">
-        <Input name="logbook" type="textarea" />
-      </Field>
-      <Field label="List Kompetensi" v-if="isKompetensi === 'Ya'">
-        <v-select v-model="kompetensi" :options="listKompetensi"> </v-select>
-      </Field>
-      <input type="hidden" v-model="kompetensi" name="kompetensi" />
-      <Field label="Tipe" v-if="isKompetensi === 'Ya'">
-        <input-check
-          v-model="tipeKompetensi"
-          name="tipeKompetensi"
-          type="radio"
-          column
-          :options="{ 1: 'Observasi', 2: 'Asistensi', 3: 'Mandiri' }"
-        />
-      </Field>
-      <Field label="Keterangan" v-if="isKompetensi === 'Ya'">
-        <Input name="keterangan" type="textarea" />
-      </Field>
+      <div v-if="isKompetensi === 'Tidak'">
+        <field label="Logbook">
+          <Input name="logbook" type="textarea" />
+        </field>
+      </div>
+      <div v-if="isKompetensi === 'Ya'">
+        <field label="List Kompetensi">
+          <v-select v-model="kompetensi" :options="listKompetensi"> </v-select>
+        </field>
+        <input type="hidden" v-model="kompetensi" name="kompetensi" />
+        <field label="Tipe">
+          <input-check
+            v-model="tipeKompetensi"
+            name="tipeKompetensi"
+            type="radio"
+            column
+            :options="{ 1: 'Observasi', 2: 'Asistensi', 3: 'Mandiri' }"
+          />
+        </field>
+        <field label="Keterangan">
+          <Input name="keterangan" type="textarea" />
+        </field>
+      </div>
       <jb-buttons type="justify-end">
         <jb-button
           type="submit"
-          color="bg-blue-500 text-white hover:bg-blue-600"
+          color="info"
           label="Simpan"
         />
       </jb-buttons>

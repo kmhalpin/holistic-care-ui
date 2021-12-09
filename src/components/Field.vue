@@ -1,33 +1,35 @@
-<script setup>
-import { computed, useSlots, defineProps } from 'vue';
+<script>
+import { computed } from 'vue';
 
-defineProps({
-  label: {
-    type: String,
-    default: null,
+export default {
+  props: {
+    label: {
+      type: String,
+      default: null,
+    },
+    help: {
+      type: String,
+      default: null,
+    },
   },
-  help: {
-    type: String,
-    default: null,
+  setup(props, { slots }) {
+    const wrapperClass = computed(() => {
+      const base = [];
+      const slotsLength = slots.default().length;
+
+      if (slotsLength > 1) {
+        base.push('grid grid-cols-1 gap-3');
+      }
+
+      if (slotsLength === 2) {
+        base.push('md:grid-cols-2');
+      }
+
+      return base;
+    });
+    return { wrapperClass };
   },
-});
-
-const slots = useSlots();
-
-const wrapperClass = computed(() => {
-  const base = [];
-  const slotsLength = slots.default().length;
-
-  if (slotsLength > 1) {
-    base.push('grid grid-cols-1 gap-3');
-  }
-
-  if (slotsLength === 2) {
-    base.push('md:grid-cols-2');
-  }
-
-  return base;
-});
+};
 </script>
 
 <template>
