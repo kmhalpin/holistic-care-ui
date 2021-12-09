@@ -21,7 +21,7 @@ const props = defineProps({
     default: null,
   },
   icon: {
-    type: String,
+    type: [String, Array],
     default: null,
   },
   type: {
@@ -91,7 +91,7 @@ const inputEl = ref(null);
       :type="computedType"
       :class="inputElClass"
     >
-    <control-icon
+    <fa-icon
       v-if="icon"
       :icon="icon"
       :h="controlIconH"

@@ -1,18 +1,17 @@
 <template>
-  <div class="flex justify-center items-center h-full">
+  <div class="flex justify-center items-center h-screen">
     <div v-if="!isMobile()" class="p-12 text-center">
       <p>Harap membuka aplikasi melalui smartphone untuk melakukan absensi</p>
     </div>
     <div v-else class="p-12">
       <qrcode-stream @decode="onDecode" :camera="camera" @init="onInit">
-        <jb-button
-          @click="switchCamera"
-          color="bg-blue-500 text-white hover:bg-blue-600"
-          small
-          label="switch"
-        />
       </qrcode-stream>
       <div class="text-center">
+        <jb-button
+          @click="switchCamera"
+          small
+          label="switch camera"
+        />
         <p>Arahkan kamera ke QR Code</p>
       </div>
     </div>
@@ -50,6 +49,7 @@ export default {
           this.camera = 'front';
           break;
         default:
+          this.camera = 'auto';
           break;
       }
     },

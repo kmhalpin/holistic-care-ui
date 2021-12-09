@@ -1,5 +1,5 @@
 <template>
-  <Table :rows="tugas">
+  <paginated :rows="tugas">
     <template v-slot:row="rowProps">
       <card :title="rowProps.item.preceptor">
         <p>{{ rowProps.item.judul }}</p>
@@ -14,12 +14,12 @@
         </jb-buttons>
       </card>
     </template>
-  </Table>
+  </paginated>
 </template>
 
 <script>
 import Card from '../components/Card.vue';
-import Table from '../components/Table.vue';
+import Paginated from '../components/Paginated.vue';
 import JbButtons from '../components/JbButtons.vue';
 import JbButton from '../components/JbButton.vue';
 
@@ -99,7 +99,7 @@ export default {
   },
   components: {
     Card,
-    Table,
+    Paginated,
     JbButtons,
     JbButton,
   },

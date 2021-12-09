@@ -13,7 +13,7 @@
       </Field>
       <input type="hidden" v-model="kompetensi" name="kompetensi" />
       <Field label="Tipe" v-if="isKompetensi === 'Ya'">
-        <check-input
+        <input-check
           v-model="tipeKompetensi"
           name="tipeKompetensi"
           type="radio"
@@ -34,7 +34,7 @@
     </form>
   </card>
   <card title="Logbook">
-    <Table table :rows="logbooks">
+    <paginated table :rows="logbooks">
       <template v-slot:thead>
         <tr>
           <th>No</th>
@@ -47,18 +47,18 @@
         <td>{{ rowProps.item.logbook }}</td>
         <td>{{ rowProps.item.kompetensi ? "Y" : "N" }}</td>
       </template>
-    </Table>
+    </paginated>
   </card>
 </template>
 
 <script>
 import Card from '../components/Card.vue';
-import Table from '../components/Table.vue';
+import Paginated from '../components/Paginated.vue';
 import Field from '../components/Field.vue';
 import Input from '../components/Input.vue';
 import JbButtons from '../components/JbButtons.vue';
 import JbButton from '../components/JbButton.vue';
-import CheckInput from '../components/CheckInput.vue';
+import InputCheck from '../components/InputCheck.vue';
 
 export default {
   name: 'Logbook',
@@ -134,10 +134,10 @@ export default {
   },
   components: {
     Card,
-    Table,
+    Paginated,
     Field,
     Input,
-    CheckInput,
+    InputCheck,
     JbButtons,
     JbButton,
   },

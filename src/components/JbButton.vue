@@ -7,6 +7,18 @@ export default {
       type: [String, Number],
       default: null,
     },
+    icon: {
+      type: [String, Array],
+      default: null,
+    },
+    href: {
+      type: String,
+      default: null,
+    },
+    target: {
+      type: String,
+      default: null,
+    },
     type: {
       type: String,
       default: null,
@@ -15,12 +27,37 @@ export default {
       type: String,
       default: 'bg-white text-black hover:bg-gray-50',
     },
+    as: {
+      type: String,
+      default: null,
+    },
     small: Boolean,
+    outline: Boolean,
     active: Boolean,
     disabled: Boolean,
   },
   setup(props) {
-    const computedType = computed(() => props.type ?? 'button');
+    const is = computed(() => {
+      if (props.as) {
+        return props.as;
+      }
+
+      if (props.href) {
+        return 'a';
+      }
+
+      return 'button';
+    });
+
+    const computedType = computed(() => {
+      if (is.value === 'button') {
+        return props.type ?? 'button';
+      }
+
+      return null;
+    });
+
+    const labelClass = computed(() => (props.small && props.icon ? 'px-1' : 'px-2'));
 
     const componentClass = computed(() => {
       const base = [
@@ -35,31 +72,37 @@ export default {
         'duration-150',
         'border',
         'rounded',
-        props.active ? 'ring ring-black' : 'ring-blue-700',
+        props.active ? 'ring ring-black dark:ring-white' : 'ring-blue-700',
         props.small ? 'p-1' : 'p-2',
         props.color,
       ];
 
       if (props.disabled) {
-        base.push('cursor-not-allowed', 'opacity-70');
+        base.push('cursor-not-allowed', props.outline ? 'opacity-50' : 'opacity-70');
       }
 
       return base;
     });
-    return { computedType, componentClass };
+    return {
+      is, computedType, labelClass, componentClass,
+    };
   },
 };
-
 </script>
 
 <template>
-  <button
+  <component
+    :is="is"
     :class="componentClass"
+    :href="href"
     :type="computedType"
+    :target="target"
     :disabled="disabled"
   >
+    <fa-icon v-if="icon" :icon="icon" />
     <span
       v-if="label"
+      :class="labelClass"
     >{{ label }}</span>
-  </button>
+  </component>
 </template>
