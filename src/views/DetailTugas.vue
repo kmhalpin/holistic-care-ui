@@ -5,6 +5,7 @@
     <p>Deadline: {{ getDateString(tugas.deadline) }}</p>
     <div class="no-tailwindcss-base" v-html="tugas.detail"></div>
     <Form :validation-schema="schema">
+      <ErrorMessage name="file" />
       <jb-buttons type="justify-end overflow-x-auto">
         <input-file v-model="fileData"
           label="Choose Files"
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-import { Form } from 'vee-validate';
+import { Form, ErrorMessage } from 'vee-validate';
 
 import { getDateString } from '../utils';
 import Card from '../components/Card.vue';
@@ -43,16 +44,22 @@ export default {
         deadline: '2021-12-08T23:23:59.000Z',
       },
       fileData: null,
-      schema: {
-        file(value) {
-          console.log(value);
-          return true;
-        },
-      },
     };
   },
   methods: {
     getDateString,
+  },
+  computed: {
+    schema() {
+      const { fileData } = this.$data;
+      return {
+        file() {
+          if (typeof fileData !== 'object' || fileData === null) return 'Upload jawaban!';
+          if (fileData.type !== 'application/pdf') return 'Hanya menerima file pdf!';
+          return true;
+        },
+      };
+    },
   },
   components: {
     Card,
@@ -60,6 +67,7 @@ export default {
     JbButtons,
     JbButton,
     Form,
+    ErrorMessage,
   },
 };
 </script>
