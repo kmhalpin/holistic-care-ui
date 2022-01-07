@@ -1,5 +1,6 @@
 <template>
-  <card title="Insert Logbook">
+  <card title="Insert Logbook" />
+  <card>
     <form>
       <field label="Kompetensi">
         <v-select v-model="isKompetensi" :options="['Ya', 'Tidak']"> </v-select>
@@ -20,7 +21,6 @@
             v-model="tipeKompetensi"
             name="tipeKompetensi"
             type="radio"
-            column
             :options="{ 1: 'Observasi', 2: 'Asistensi', 3: 'Mandiri' }"
           />
         </field>
@@ -37,7 +37,8 @@
       </jb-buttons>
     </form>
   </card>
-  <card title="Logbook">
+  <card title="Logbook" />
+  <card noPadding>
     <paginated table :rows="logbooks">
       <template v-slot:thead>
         <tr>

@@ -1,10 +1,10 @@
 <template>
-  <card title="Tugas" />
-  <paginated :rows="tugas">
+  <card title="Assessment" />
+  <paginated :rows="assessment">
     <template v-slot:row="rowProps">
       <card type="assignment" :assignment="{
         ...rowProps.item,
-        href: '/tugas/' + rowProps.item.id,
+        href: '/assessment/' + rowProps.item.id,
       }" />
     </template>
   </paginated>
@@ -15,73 +15,73 @@ import Card from '../components/Card.vue';
 import Paginated from '../components/Paginated.vue';
 
 export default {
-  name: 'Tugas',
+  name: 'Assessment',
   data() {
     return {
-      tugas: [
+      assessment: [
         {
           id: 12,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 39,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 17,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 19,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 22,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 31,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 1,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 2,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 99,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 42,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },
         {
           id: 55,
-          judul: 'Tugas Keperawatan Dasar',
+          judul: 'Assessment Keperawatan Dasar',
           preceptor: 'dr John Doe, SpPD',
           deadline: '2021-12-08T23:23:59.000Z',
         },

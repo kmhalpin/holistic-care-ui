@@ -1,10 +1,15 @@
 <template>
+  <card title="Absensi" />
   <div class="flex justify-center items-center h-screen">
     <div v-if="!isMobile()" class="p-12 text-center">
       <p>Harap membuka aplikasi melalui smartphone untuk melakukan absensi</p>
     </div>
     <div v-else class="p-12">
-      <qrcode-stream @decode="onDecode" :camera="camera" @init="onInit">
+      <qrcode-stream
+        class="border border-gray-100"
+        @decode="onDecode"
+        :camera="camera"
+        @init="onInit">
       </qrcode-stream>
       <div class="text-center">
         <jb-button
@@ -20,6 +25,7 @@
 
 <script>
 import { QrcodeStream } from 'vue-qrcode-reader';
+import Card from '../components/Card.vue';
 import JbButton from '../components/JbButton.vue';
 
 export default {
@@ -32,6 +38,7 @@ export default {
   components: {
     QrcodeStream,
     JbButton,
+    Card,
   },
   methods: {
     isMobile() {
@@ -84,6 +91,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>

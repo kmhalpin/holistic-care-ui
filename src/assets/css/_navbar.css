@@ -1,11 +1,7 @@
 .nav {
-  @apply p-2 font-semibold text-center
+  @apply p-2 text-center text-white hover:text-blue-900 transition duration-300
 }
 
-.nav-active {
-  @apply text-gray-500 border-b-4 border-gray-500;
-}
-
-.nav-inactive {
-  @apply text-white hover:text-gray-500 transition duration-300;
+.nav.active {
+  @apply text-blue-900 border-b-4 border-blue-900;
 }

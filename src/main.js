@@ -2,14 +2,32 @@ import { createApp } from 'vue';
 import vSelect from 'vue-select';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faBook, faTasks, faQrcode, faTable, faSignOutAlt, faUpload,
+  faBook, faTasks, faCamera, faEdit, faSignOutAlt, faUpload, faList, faHome, faChartPie, faFile,
+  faCommentAlt, faFileAlt, faCheckCircle, faArrowUp, faBookReader, faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import App from './App.vue';
 import './assets/css/main.css';
 import 'vue-select/dist/vue-select.css';
 
-library.add(faBook, faTasks, faQrcode, faTable, faSignOutAlt, faUpload);
+library.add(
+  faBook,
+  faTasks,
+  faCamera,
+  faEdit,
+  faSignOutAlt,
+  faUpload,
+  faList,
+  faHome,
+  faChartPie,
+  faFile,
+  faCommentAlt,
+  faFileAlt,
+  faCheckCircle,
+  faArrowUp,
+  faBookReader,
+  faUserCircle,
+);
 
 createApp(App)
   .component('v-select', vSelect)

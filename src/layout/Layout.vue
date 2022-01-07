@@ -1,25 +1,27 @@
 <template>
-  <nav-bar />
-  <main class="mb-16 md:mb-0 md:grid md:grid-cols-3">
-    <div
-      class="hidden md:col-span-2 md:block min-h-screen"
-      style='background-image: url("https://app.holisticareindonesia.com/images/bg-login.jpg");
-        background-size: contain;
-        background-attachment: fixed;'>
-    </div>
-    <div class="md:col-span-1">
-      <slot />
-    </div>
-  </main>
+  <component :is="layout">
+    <slot />
+  </component>
 </template>
 
 <script>
-import NavBar from '../components/NavBar.vue';
+import AppLayout from './AppLayout.vue';
+import BlankLayout from './BlankLayout.vue';
 
 export default {
-  components: { NavBar },
+  props: {
+    layout: {
+      type: String,
+      default: 'app-layout',
+    },
+  },
+  components: {
+    AppLayout,
+    BlankLayout,
+  },
 };
 </script>
 
 <style>
+
 </style>

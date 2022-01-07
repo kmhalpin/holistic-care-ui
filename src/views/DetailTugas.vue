@@ -1,8 +1,13 @@
 <template>
-  <card title="Insert Tugas">
-    <p class="font-bold">{{ tugas.judul }}</p>
-    <p>{{ tugas.preceptor }}</p>
-    <p>Deadline: {{ getDateString(tugas.deadline) }}</p>
+  <card title="Insert Tugas"/>
+  <card>
+    <div class="overflow-hidden">
+      <p class="text-lg pb-1 truncate">{{ tugas.judul }}</p>
+      <div class="flex items-center justify-between">
+        <p class="text-sm text-gray-600 truncate">{{ tugas.preceptor }}</p>
+        <p class="text-xs text-yellow-600">{{ getDateString(tugas.deadline) }}</p>
+      </div>
+    </div>
     <div class="no-tailwindcss-base" v-html="tugas.detail"></div>
     <Form :validation-schema="schema">
       <ErrorMessage name="file" />
@@ -71,6 +76,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
