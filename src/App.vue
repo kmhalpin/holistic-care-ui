@@ -1,5 +1,5 @@
 <template>
-  <layout>
+  <layout layout="app-layout">
     <Home />
   </layout>
 </template>

@@ -1,30 +1,58 @@
 <template>
-  <card>
-    <form>
-      <field label="Username">
-        <Input name="username" icon="user-circle" placeholder="Username" />
-      </field>
-      <field label="Password">
-        <Input name="password" placeholder="Password" />
-      </field>
-      <jb-buttons type="justify-between">
-        <jb-button
-          as="a"
-          href="/forgot"
-          label="Lupa Password ?"
-        />
-        <jb-button
-          type="submit"
-          label="Sign In"
-        />
-      </jb-buttons>
-    </form>
-  </card>
+  <div class="absolute inset-center">
+    <h1 class="text-2xl text-center text-primary">
+      Holisticare
+      <span class="font-bold">Indonesia</span>
+    </h1>
+    <card class="shadow-2xl">
+      <form>
+        <div class="flex items-center">
+          <fa-icon
+            class="text-3xl text-primary mr-3"
+            :icon="['fas','user-circle']"
+          />
+          <Input
+            name="username"
+            placeholder="Email / No Induk Mahasiswa"
+            borderless
+            transparent
+            class="bg-gray-100 rounded-lg w-full" />
+        </div>
+        <div class="flex items-center my-6">
+          <fa-icon
+            class="text-3xl text-primary mr-3"
+            :icon="['fas','lock']"
+          />
+          <Input
+            name="password"
+            placeholder="Password"
+            borderless
+            transparent
+            class="bg-gray-100 rounded-lg w-full" />
+        </div>
+        <jb-buttons type="justify-between">
+          <jb-button
+            as="a"
+            href="/forgot"
+            label="Lupa Password ?"
+            class="mr-5"
+            borderless
+          />
+          <jb-button
+            type="submit"
+            label="Sign In"
+            color="light"
+            :icon="['fas','sign-in-alt']"
+            borderless
+          />
+        </jb-buttons>
+      </form>
+    </card>
+  </div>
 </template>
 
 <script>
 import Card from '../components/Card.vue';
-import Field from '../components/Field.vue';
 import Input from '../components/Input.vue';
 import JbButtons from '../components/JbButtons.vue';
 import JbButton from '../components/JbButton.vue';
@@ -32,7 +60,6 @@ import JbButton from '../components/JbButton.vue';
 export default {
   components: {
     Card,
-    Field,
     Input,
     JbButtons,
     JbButton,

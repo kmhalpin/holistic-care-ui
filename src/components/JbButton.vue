@@ -35,6 +35,7 @@ export default {
     outline: Boolean,
     active: Boolean,
     disabled: Boolean,
+    borderless: Boolean,
   },
   setup(props) {
     const is = computed(() => {
@@ -70,7 +71,7 @@ export default {
         'transition-colors',
         'focus:ring',
         'duration-150',
-        'border',
+        props.borderless ? 'border-0' : 'border',
         'rounded',
         props.active ? 'ring ring-black dark:ring-white' : 'ring-blue-700',
         props.small ? 'p-1' : 'p-2',

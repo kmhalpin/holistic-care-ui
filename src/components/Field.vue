@@ -36,7 +36,7 @@ export default {
   <div class="mb-6 last:mb-0">
     <label
       v-if="label"
-      class="block font-bold mb-2"
+      class="block text-gray-600 mb-2"
     >{{ label }}</label>
     <div :class="wrapperClass">
       <slot />
