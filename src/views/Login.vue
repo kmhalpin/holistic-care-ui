@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute inset-center">
+  <div id="login-back" class="absolute bottom-0 top-1/3 left-0 right-0">
     <h1 class="text-2xl text-center text-primary">
       Holisticare
       <span class="font-bold">Indonesia</span>
@@ -8,7 +8,7 @@
       <form>
         <div class="flex items-center">
           <fa-icon
-            class="text-3xl text-primary mr-3"
+            class="text-2xl md:text-3xl text-primary mr-3"
             :icon="['fas','user-circle']"
           />
           <Input
@@ -20,7 +20,7 @@
         </div>
         <div class="flex items-center my-6">
           <fa-icon
-            class="text-3xl text-primary mr-3"
+            class="text-2xl md:text-3xl text-primary mr-3"
             :icon="['fas','lock']"
           />
           <Input
@@ -35,7 +35,6 @@
             as="a"
             href="/forgot"
             label="Lupa Password ?"
-            class="mr-5"
             borderless
           />
           <jb-button

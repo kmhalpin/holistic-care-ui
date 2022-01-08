@@ -1,6 +1,6 @@
 <template>
-  <layout layout="app-layout">
-    <Home />
+  <layout layout="blank-layout">
+    <Login />
   </layout>
 </template>
 
@@ -11,13 +11,13 @@ import Layout from './layout/Layout.vue';
 // import Tugas from './views/Tugas.vue';
 // import DetailTugas from './views/DetailTugas.vue';
 // import Assessment from './views/Assessment.vue';
-import Home from './views/Home.vue';
-// import Login from './views/Login.vue';
+// import Home from './views/Home.vue';
+import Login from './views/Login.vue';
 
 export default {
   name: 'App',
   components: {
-    Home,
+    Login,
     Layout,
   },
 };
