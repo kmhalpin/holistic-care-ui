@@ -1,23 +1,7 @@
 export const getDateString = (dateISO) => {
   const date = new Date(dateISO);
-  const getMonth = (month) => {
-    switch (month) {
-      case 1: return 'Jan';
-      case 2: return 'Feb';
-      case 3: return 'Mar';
-      case 4: return 'Apr';
-      case 5: return 'Mei';
-      case 6: return 'Jun';
-      case 7: return 'Jul';
-      case 8: return 'Agu';
-      case 9: return 'Sept';
-      case 10: return 'Okt';
-      case 11: return 'Nov';
-      case 12: return 'Des';
-      default: return 'Not Found';
-    }
-  };
-  return `${date.getDate()} ${getMonth(date.getMonth())} ${date.getFullYear()}`;
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+  return `${date.getDate() - 1} ${months[date.getMonth()] || 'Not Found'} ${date.getFullYear()}`;
 };
 
 export default { getDateString };
